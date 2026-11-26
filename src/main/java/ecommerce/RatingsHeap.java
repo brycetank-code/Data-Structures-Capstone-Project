@@ -1,26 +1,29 @@
 package ecommerce;
-import java.math.BigDecimal;
-import java.math.BigInteger;
 
 //Created a heap to find the top-rated n products; resembles a minimum heap
-class Ratings{
+class RatingsHeap{
+    Product[] allProducts;
     Product[] topRated;
     int size = 0;
 
-    Ratings(int capacity){
+    RatingsHeap(int capacity, Product[] allProducts){
+        this.allProducts = allProducts;
         topRated = new Product[capacity];
     }
 
-    void minHeap(Product p){
-        if (size < topRated.length){
-            topRated[size] = p;
-            fillMin(size);
-            size++;
-        }
+    void minHeap(){
+        for (int i = 0; i < allProducts.length; i++){
+            Product p = allProducts[i];
+            if (size < topRated.length){
+                topRated[size] = p;
+                fillMin(size);
+                size++;
+            }
 
-        else if (p.rating.compareTo(topRated[0].rating) > 0){
-            topRated[0] = p;
-            replaceMin();
+            else if (p.rating.compareTo(topRated[0].rating) > 0){
+                topRated[0] = p;
+                replaceMin();
+            }
         }
     }
 
@@ -72,16 +75,19 @@ class Ratings{
         }
     }
 
-    void maxHeap(Product p){
-        if (size < topRated.length){
-            topRated[size] = p;
-            fillMax(size);
-            size++;
-        }
+    void maxHeap(){
+        for (int i = 0; i < allProducts.length; i++){
+            Product p = allProducts[i];
+            if (size < topRated.length){
+                topRated[size] = p;
+                fillMax(size);
+                size++;
+            }
 
-        else if (p.rating.compareTo(topRated[0].rating) < 0){
-            topRated[0] = p;
-            replaceMax();
+            else if (p.rating.compareTo(topRated[0].rating) < 0){
+                topRated[0] = p;
+                replaceMax();
+            }
         }
     }
 

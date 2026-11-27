@@ -11,7 +11,7 @@ class RatingsHeap{
         topRated = new Product[capacity];
     }
 
-    void minHeap(){
+    public void minHeap(){
         for (int i = 0; i < allProducts.length; i++){
             Product p = allProducts[i];
             if (size < topRated.length){
@@ -75,7 +75,7 @@ class RatingsHeap{
         }
     }
 
-    void maxHeap(){
+    public void maxHeap(){
         for (int i = 0; i < allProducts.length; i++){
             Product p = allProducts[i];
             if (size < topRated.length){
@@ -98,7 +98,7 @@ class RatingsHeap{
     of the products in the array, and then repeat the process until the new product
     is less than its new parent or it becomes the new root
     */
-     private void fillMax(int currentPosition){
+    private void fillMax(int currentPosition){
         while (currentPosition > 0){
             int parentPosition = (currentPosition-1) / 2;
             if(topRated[parentPosition].rating.compareTo(topRated[currentPosition].rating) >= 0){
@@ -145,7 +145,7 @@ class RatingsHeap{
         topRated[j] = temp;
     }
 
-    private void print(){
+    public void print(){
         for (int i = 0; i < size; i++){
             System.out.println("Product ID: " + topRated[i].id + ", Price: $" + topRated[i].price.toPlainString() + ", Rating: " + topRated[i].rating.toPlainString());
         }

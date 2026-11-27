@@ -1,4 +1,4 @@
-package com.mycompany.orderedsearch;
+package ecommerce;
 
 import java.math.BigDecimal;
 import java.util.*;
